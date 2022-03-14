@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+</head>
+<body>
+
+<h1>Custom Range Slider</h1>
+<p>Drag the slider to display the current value.</p>
+
+<div class="slidecontainer">
+
+
+  <input type="range" min="0" max="180" value="50" class="slider" id="id0">
+
+  <input type="range" min="70" max="140" value="50" class="slider" id="id1">
+  
+  <input type="range" min="30" max="120" value="50" class="slider"  id="id2">
+ 
+  <input type="range" min="40" max="120" value="50" class="slider" id="id3">
+  
+  <span>Value:</span> <span id="f" style="font-weight:bold;color:red"></span>
+
+
+</div>
+
+<script>
+
+var slide00 = document.getElementById("id0");
+var slide01 = document.getElementById("id1");
+var slide02 = document.getElementById("id2");
+var slide03 = document.getElementById("id3");
+var y = document.getElementById("f");
+y.innerHTML = slide00.value;
+
+
+slide00.oninput = function() {
+        y.innerHTML = this.value;
+        console.log("slide 0:" + this.value)
+        //postData(0,this.value)
+
+}
+
+slide00.onchange = function() {
+        y.innerHTML = this.value;
+        console.log("slide 0:" + this.value)
+        postData(0,this.value)
+
+}
+
+
+slide01.oninput = function() {
+	y.innerHTML = this.value;
+	console.log("slide 1:" + this.value)
+        postData(1,this.value)
+	
+}
+
+slide02.oninput = function() {
+	y.innerHTML = this.value;
+	console.log("slide 2:" + this.value)
+        postData(2,this.value)
+}
+
+slide03.oninput = function() {
+	y.innerHTML = this.value;
+	console.log("slide 3:" + this.value)
+        postData(3,this.value)
+}
+
+
+slider00.onmouseup = function () {
+        y.innerHTML = this.value;
+        console.log("slide 0:" + this.value)
+        postData(3,this.value)
+}
+
+
+
+
+
+    //Add file blob to a form and post
+    function postData(servo, grados) {
+        let formdata = new FormData();
+        formdata.append("servo", servo);
+        formdata.append("grados", grados);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://techhublabs.com:5000/slider', true);
+        xhr.onload = function () {
+            if (this.status === 200) {
+                console.log(this.response);
+                respuesta = this.response;
+//                alert(respuesta);
+		}
+	        else
+                {
+//                alert(this.response);
+                console.error(xhr);
+                }
+        };
+        xhr.send(formdata);
+    }
+
+</script>
+
+
+
+
+</body>
+</html>
+
+
+

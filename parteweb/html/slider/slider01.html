@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div data-role="page">
+  <div data-role="header">
+    <h1>Slider Control</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <form method="post" action="https://techhublabs.com:5000/slider">
+      <label for="points">Points:</label>
+      <input type="range" name="servo" id="servo" value="50" min="0" max="100">
+      <input type="submit" data-inline="true" value="Submit">
+    </form>
+  </div>
+  <div data-role="main" class="ui-content">
+    <form method="post" action="https://techhublabs.com:5000/slider"">
+      <label for="points">Points:</label>
+      <input type="range" name="points" id="points" value="50" min="0" max="100">
+      <input type="submit" data-inline="true" value="Submit">
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+<script>
+$(function(){  
+  $('#points').slider({
+    range: true,
+    min: 0,
+    max: 1000,
+    values: [ 90, 290 ],
+    slide: function( event, ui ) {
+      $('#bottomValue').val(ui.values[0]);
+      $('#topValue').val(ui.values[1]);
+      $('#rangeval').html(ui.values[0]+" - "+ui.values[1]);
+    },
+    stop: function(event, ui) {
+      $('form').submit();          
+    },
+  });
+});
+</script>
+

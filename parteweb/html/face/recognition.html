@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Biometrics Facial Recognition</title>
+</head>
+
+<style>
+    /* mirror the image */
+    video, canvas {
+    transform: scale(-1, 1); /*For Firefox (& IE) */
+    -webkit-transform: scale(-1, 1); /*for Chrome & Opera (& Safari) */
+    }
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+
+
+<body style="background-color:#F2F3F4;">
+
+<div align="center">
+<!--	<img src="iconos/techhublabs.jpeg" alt="Solvetic" width="600" height="120"/>  -->
+        <img src="../iconos/so.png"  width="300" height="50"/>
+</div>
+
+<div class="row">
+	<div class="column"  id="container" align="center">
+		<video id="myVideo" width=400 height=400 autoplay> </video>
+		<div class="select">
+        		<label for="videoSource">Select Video source: </label><select id="videoSource"></select>
+		</div>
+		<script src="../js/main_video.js"></script>
+	</div>
+	<div class="column"  id="container" align="justify">
+                <p id="demo"></p>
+                <h3>Please ... try the facial recognition ... press here ..</h3>
+                <button type="submit" onclick="buttom_rekognition()">
+                    <img src="../iconos/facial_rec.png" width="200" height="150"/>
+                </button>
+                <p id="rekognition"></p>
+
+		    <br><font face="Comic Sans MS,arial,verdana" ><h4>Biometrics Facial Recognition Test, by Leo Gamboa</h4></font>
+
+		    <audio id="audioPlayback" controls autoplay>
+		    <source id="audioSource" type="audio/mp3" src="">
+		    </audio>
+		    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.410.0.min.js"></script>
+
+	</div>
+</div>
+
+
+<script src="../js/techhublabs_scripts.js"></script> 
+
+
+</body>
+</html>
+

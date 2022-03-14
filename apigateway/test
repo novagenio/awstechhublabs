@@ -1,0 +1,3 @@
+curl --request POST -H "Content-Type: application/pdf" --data-binary "@/path/to/your/file.pdf" https://rt1th8m9d1.execute-api.eu-west-1.amazonaws.com/v1/upload
+
+
